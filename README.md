@@ -1,11 +1,12 @@
 # Streamlit avec Docker
 
-[Tuto Youtube](https://www.youtube.com/watch?v=W1ickBSX63w) - 00:06:50
+[Tuto Youtube](https://www.youtube.com/watch?v=W1ickBSX63w) - 00:27:00
 
 Recours à docker pour partager une application :
 
 - Installer docker desktop sur l'ordinateur avec Windows
 - Installer l'extension Docker sur VSC
+- Création du fichier 'Dockerfile' dans le répertoire principal pour construire une image de base Docker (images de base open source sur le docker hub) : **ce fichier ne doit pas être dans le répertoire où se situe fichier python pour lancer l'application**
 
 Date : 08/03/25
 
@@ -84,29 +85,20 @@ uv venv
 uv venv --version 3.12
 ```
 
-**Pour synchroniser l'environnement avec le nouveau fichier requirements.txt**
+Pour créer une librairie
 
 ```
-uv pip sync requirements.txt
-
+uv add nom_librairie
 ```
 
-Installation des dépendances :
+Création et mise à jour du fichier requirements.txt
 
 ```
-uv add polars
+pip freeze > requirements.txt
 ```
 
-Synchronisation de l'environnement :
+Pour vérifier s'il n'y a pas de conflit de librairies
 
 ```
-uv sync
-```
-
-Qualité du code :
-
-```
-uvx ruff check # Analyse du colde
-uvx ruff format # Formatage du code
-uvx pytest # Lance les tests
+pip install -r requirements.txt
 ```
