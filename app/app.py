@@ -10,5 +10,5 @@ if __name__ == '__main__':
     )
     
     # Titre principal
-    st.title('Hello World!')
+    st.title('Hello World! 😁')
     
