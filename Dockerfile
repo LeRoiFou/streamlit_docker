@@ -25,10 +25,3 @@ EXPOSE 8501
 # "run" : lancement de l'application
 # "app.py" : fichier python pour lancer l'application
 CMD ["streamlit", "run", "app.py"]
-
-# Puis saisir dans le terminal pour construire l'image avec l'instruction
-# NE PAS OUBLIER L'ESPACE SUIVI DU POINT A LA FIN DE L'INSTRUCTION !
-# docker build -t nom_image .
-
-# Et pour vérifier que l'image a été créée, saisir dans le terminal :
-# docker image ls
