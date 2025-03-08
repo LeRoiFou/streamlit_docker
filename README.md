@@ -2,7 +2,10 @@
 
 [Tuto Youtube](https://www.youtube.com/watch?v=W1ickBSX63w) - 00:06:50
 
-Recours à docker pour partager une application
+Recours à docker pour partager une application :
+
+- Installer docker desktop sur l'ordinateur avec Windows
+- Installer l'extension Docker sur VSC
 
 Date : 08/03/25
 
