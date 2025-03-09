@@ -4,6 +4,8 @@
 
 Recours à docker pour partager une application :
 
+## 1. Docker desktop
+
 - Installer [docker desktop](https://docs.docker.com/desktop/setup/install/windows-install/) sur l'ordinateur qui utilise l'OS Windows
 - Installer l'extension Docker sur VSC
 - Test de l'application
@@ -55,6 +57,84 @@ Recours à docker pour partager une application :
   ```
   http://localhost:8501/
   ```
+
+**_<font color='yellow'>Si docker ne se connecte pas, relancer l'application installée sur l'ordinateur, Docker Desktop</font>_**
+
+## 2. Docker hub
+
+- Se connecter sur le site [Docker Hub](https://hub.docker.com/)
+- Sélectionner "Create a Repository" et donner un nom du repository puis appuyer sur 'Create'
+- Retourner sur VSC et saisir l'instruction suivant dans le terminal, afin 'taguer' (copier) l'image :
+
+  ```
+  docker image tag nom_image leroifou/nom_repository:v1
+  ```
+
+  - _leroifou : nom de connexion sur Docker Hub (comme pour gitHub)_
+  - _v1 : version 1_
+
+- Toujours dans le terminal, 'pusher' (envoyer) l'image vers Docker Hub :
+
+  ```
+  docker push leroifou/nom_repository:v1
+  ```
+
+- Vérifier sur Docker Hub si l'image a bien été transféré sur le site
+
+- En listant les images avec l'instruction suivante, on s'aperçoit qu'on a deux images : une image en local, et une image mise sur Docker Hub
+
+  ```
+  docker image ls
+  ```
+
+- Supprimer l'image conservée en local (prend de la mémoire) :
+
+  ```
+  docker image rm nom_image
+  ```
+
+- Arrêter l'exécution du container :
+
+  ```
+  docker stop nom_container
+  ```
+
+- Puis supprimer le container conservé en local :
+
+  ```
+  docker container rm nom_container
+  ```
+
+- Vérifier que l'image et le container en local ont bien été supprimés :
+
+  ```
+  docker image ls
+  ```
+
+  ```
+  docker container ls
+  ```
+
+- Il n'est plus possible de se connecter avec l'instruction suivante sur la page web, car l'image et le container locaux ont été supprimés :
+
+  ```
+  http://localhost:8501/
+  ```
+
+- Pour lancer l'application, saisir dans le terminal l'instruction suviante :
+
+  ```
+  docker run --publish 8501:8501 --detach --name nomx leroifou/nom_repository:v1
+  ```
+
+  - _nomx : nom donné_
+
+- Puis saisir cette fois-ci sur une page @, au niveau de l'URL :
+  ```
+  http://localhost:8501/
+  ```
+
+Cela permet de créer un nouveau container et une nouvelle image, qui peut être utilisé sur un autre ordinateur, permettant de partager l'application sans recourir à un exécutable qu'on pourrait créer avec la librairie cx_freeze
 
 Date : 08/03/25
 
